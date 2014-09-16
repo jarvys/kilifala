@@ -12,17 +12,21 @@ html(lang="en")
         
 body
     div.container
-        p(style='text-align: center;margin-top: 10px;')
-            a.thumbnail
-                img#preview.image-responsive(style='display: none')
+        div.file.hide
+            p(style='text-align: center;margin-top: 10px;')
+                a.thumbnail
+                    img#preview.image-responsive(style='display: none')
 
-        p
-            pre.md
-            pre.link
+            p
+                pre.md
+                pre.link
 
-        p
-            form.form-inline(action='/upload', method='post', enctype='multipart/form-data', role='form')
-                div.form-group
-                    input(type='file', name='file')
+        form.form-inline(action='/upload', method='post', enctype='multipart/form-data', role='form')
+            div.form-group
+                input(type='file', name='file')
 
     script(type='text/javascript', src='/js/index.js')
+    script(type="text/javascript").
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc9b443e73a947af7ee3a49d660efabbb' type='text/javascript'%3E%3C/script%3E"));
+

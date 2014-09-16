@@ -52,7 +52,7 @@ app.use('/', express.static(__dirname + "/public"));
 app.use('/components', express.static(__dirname + "/components"));
 app.use('/uploads', express.static(__dirname + "/uploads"));
 
-PORT = 12580;
+PORT = 8574;
 app.listen(PORT, function() {
     console.log('listening on port', PORT);
 });

@@ -2,7 +2,7 @@ var $ = require('jquery');
 var Backbone = require('backbone');
 
 Backbone.$ = $;
-var $preview;
+var $preview, $file;
 var $md, $link, $form;
 
 var UploadRouter = Backbone.Router.extend({
@@ -14,6 +14,7 @@ var UploadRouter = Backbone.Router.extend({
     index: function() {},
 
     file: function(filename) {
+        $file.removeClass('hide');
         var link = 'http://bcs.duapp.com/kilifala/' + filename
         $preview.attr('src', link);
         $link.html(link);
@@ -24,6 +25,7 @@ var UploadRouter = Backbone.Router.extend({
 
 
 $(function() {
+    $file = $('.file');
     $form = $('form')
     $form.find('[name=file]').change(function() {
         $form.submit();
