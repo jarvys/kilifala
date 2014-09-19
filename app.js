@@ -1,3 +1,4 @@
+var Imagemin = require('imagemin');
 var express = require('express');
 var morgan = require('morgan');
 var multer = require('multer');
@@ -32,19 +33,27 @@ app.post('/upload/', function(req, res) {
         return res.redirect('/');
     }
 
-    console.log(file);
-    bcs.putObject({
-        bucket: 'kilifala',
-        object: file.name,
-        source: 'uploads/' + file.name
-    }, function(err, result) {
+    var filepath = 'uploads/' + file.name;
+    new Imagemin().src(filepath).dest('uploads').run(function(err, files) {
         if (err) {
             console.error(err);
             return res.redirect('/');
         }
 
-        console.log(result);
-        res.redirect('/' + req.files.file.name);
+        console.log(file);
+        bcs.putObject({
+            bucket: 'kilifala',
+            object: file.name,
+            source: filepath,
+        }, function(err, result) {
+            if (err) {
+                console.error(err);
+                return res.redirect('/');
+            }
+
+            console.log(result);
+            res.redirect('/' + req.files.file.name);
+        });
     });
 });
 

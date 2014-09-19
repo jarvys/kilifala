@@ -20,7 +20,8 @@
     "connect-multiparty": "~1.2.4",
     "multer": "~0.1.4",
     "jade": "~1.6.0",
-    "baidu-bcs": "~0.2.1"
+    "baidu-bcs": "~0.2.1",
+    "imagemin": "~2.0.0"
   },
   "devDependencies": {
     "gulp": "~3.8.8",
